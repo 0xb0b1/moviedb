@@ -1,0 +1,65 @@
+.container {
+  max-width: 1440px;
+  height: 449px;
+  background-color: #2D0C5E;
+
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h4 {
+    text-align: center;
+    color: white;
+  }
+
+  >section {
+    max-width: 781px;
+
+    h1 {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 48px;
+      line-height: 56px;
+      /* or 117% */
+
+      text-align: center;
+      letter-spacing: -0.005em;
+
+      color: #FFFFFF;
+
+    }
+  }
+}
+
+.filter {
+  padding: 8px, 16px, 8px, 16px;
+
+  margin: 0 12rem;
+
+  button {
+    border: 0;
+    padding: 8px 16px;
+
+    cursor: pointer;
+
+    background: #FFFFFF;
+    border-radius: 4px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #323232;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 7px;
+  }
+}
