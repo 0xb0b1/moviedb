@@ -23,10 +23,8 @@
       font-family: Roboto;
       font-style: normal;
       font-weight: bold;
-      font-size: 48px;
+      font-size: 3rem;
       line-height: 56px;
-      /* or 117% */
-
       text-align: center;
       letter-spacing: -0.005em;
 
@@ -37,9 +35,17 @@
 }
 
 .filter {
-  padding: 8px, 16px, 8px, 16px;
+  max-width: 1033px;
+  padding: 0 8.5rem;
 
-  margin: 0 12rem;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  margin: 0 auto;
 
   button {
     border: 0;
@@ -50,16 +56,15 @@
     background: #FFFFFF;
     border-radius: 4px;
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 24px;
-    color: #323232;
+    margin: 4px;
 
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    margin: 7px;
+    span {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 24px;
+      color: #323232;
+    }
   }
 }

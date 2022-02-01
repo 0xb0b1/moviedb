@@ -83,13 +83,15 @@ export const Filter = () => {
   return (
     <div className={styles.container}>
       <section>
-        <h1>Milhões de files, séries e pessoas para descobrir. Explore já.</h1>
+        <h1>Milhões de filmes, séries e pessoas para descobrir. Explore já.</h1>
       </section>
       <div className={styles.filter}>
         <h4>FILTRE POR:</h4>
         <div>
           {genres.map((item) => (
-            <button key={item.id}>{item.name}</button>
+            <button key={item.id}>
+              <span>{item.name}</span>
+            </button>
           ))}
         </div>
       </div>
