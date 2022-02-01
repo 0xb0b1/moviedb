@@ -421,16 +421,19 @@ interface IProps {
   id?: number;
 }
 
+const baseUrlMovieDBImage =
+  "https://www.themoviedb.org/t/p/w600_and_h900_bestv2";
+
 export const MovieListing = () => {
   const [popularMovies, setPopularMovies] = useState([]);
 
   useEffect(() => {
     const getMovies = async () => {
-      const responde = await api.get(
-        `movie/popular?api_key=${process.env.MOVIEDB_KEY}&language=en-US&page=1`
+      const response = await api.get(
+        `movie/popular?api_key=${process.env.MOVIEDB_KEY}&page=1`
       );
 
-      setPopularMovies(responde.data.results);
+      setPopularMovies(response.data);
     };
 
     getMovies();
@@ -443,8 +446,7 @@ export const MovieListing = () => {
       <div className={styles.content}>
         {popular.results.map((item) => (
           <MovieCart
-            poster_path="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/wXthtEN5kdWA1bHz03lkuCJS6hA.jpg"
-            // poster_path={item.poster_path}
+            poster_path={`${baseUrlMovieDBImage}${item.poster_path}`}
             title={item.title}
             release_date={item.release_date}
             key={item.id}
