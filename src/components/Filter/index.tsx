@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { FilterButton } from "./FilterButton";
 import styles from "./styles.module.scss";
 
 const genres = [
@@ -89,9 +91,7 @@ export const Filter = () => {
         <h4>FILTRE POR:</h4>
         <div>
           {genres.map((item) => (
-            <button key={item.id}>
-              <span>{item.name}</span>
-            </button>
+            <FilterButton name={item.name} id={item.id} key={item.id} />
           ))}
         </div>
       </div>
