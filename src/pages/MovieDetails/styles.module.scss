@@ -1,0 +1,37 @@
+.container {
+  max-width: 1440px;
+
+  margin: 0 auto;
+  padding: 0 8rem;
+
+  background-color: #2D0C5E;
+
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  // align-items: center;
+  // justify-content: center;
+
+}
+
+.hero {
+  img {
+    max-width: 383px;
+    max-height: 574px;
+    height: 100%;
+    width: 100%;
+    margin-bottom: -2rem;
+    margin-top: 2rem;
+    // margin-left: 4rem;
+  }
+}
+
+.description {
+  margin-top: .85rem;
+  margin-left: 2rem;
+
+  h2,
+  span {
+    color: white;
+  }
+}
