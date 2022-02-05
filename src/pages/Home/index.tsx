@@ -9,10 +9,9 @@ interface IProps {
   id: number;
 }
 
-export const Home = ({ id }: IProps) => {
+export const Home = () => {
   return (
     <main className={styles.homeContainer}>
-      <Header />
       <Filter />
       <MovieListing />
       <Pagination />
