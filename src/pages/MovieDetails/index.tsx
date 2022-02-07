@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useFetch } from "../../hooks/useFetch";
 import { useMovieId } from "../../hooks/useMovieId";
 import { api } from "../../services/api";
 import { converDurationToTimeString } from "../../utils/convertDurationToTimeString";
@@ -94,24 +95,20 @@ export const MovieDetails = () => {
   const { movieId } = useMovieId();
   const [movieDetails1, setMovieDetails] = useState({});
 
-  // console.log(movieId);
+  const { isLoading, value, error } = useFetch(
+    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.MOVIEDB_KEY}&page=1`
+  );
 
-  useEffect(() => {
-    const getMovieDetails = async () => {
-      const id = movieId;
-      try {
-        const response = await api.get(
-          `movie/${id}?api_key=${process.env.MOVIEDB_KEY}&page=1`
-        );
+  if (isLoading) {
+    return "Loading";
+  }
 
-        setMovieDetails(response.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
+  if (error) {
+    return "Error";
+  }
 
-    getMovieDetails();
-  }, []);
+  console.log(movieId);
+  console.log(value);
 
   return (
     <div className={styles.container}>

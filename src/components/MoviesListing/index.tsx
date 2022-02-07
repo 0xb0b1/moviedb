@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useFetch } from "../../hooks/useFetch";
 import { useFilter } from "../../hooks/useFilter";
 import { api } from "../../services/api";
 import { MovieCart } from "../MovieCart";
@@ -19,26 +20,22 @@ const baseUrlMovieDBImage =
   "https://www.themoviedb.org/t/p/w600_and_h900_bestv2";
 
 export const MovieListing = () => {
-  const [popularMovies, setPopularMovies] = useState<IProps>();
+  const { isLoading, value, error } = useFetch(
+    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.MOVIEDB_KEY}&page=1`
+  );
 
-  useEffect(() => {
-    const getMovies = async () => {
-      const response = await api.get(
-        `movie/popular?api_key=${process.env.MOVIEDB_KEY}&page=1`
-      );
+  if (isLoading) {
+    return "Loading";
+  }
 
-      setPopularMovies(response.data);
-    };
-
-    getMovies();
-  }, []);
-
-  console.log(popularMovies?.results);
+  if (error) {
+    return "Error";
+  }
 
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        {popularMovies?.results.map((item: any) => (
+        {value?.results.map((item: any) => (
           <MovieCart
             poster_path={`${baseUrlMovieDBImage}${item.poster_path}`}
             title={item.title}
