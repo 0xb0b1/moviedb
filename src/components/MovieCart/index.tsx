@@ -4,14 +4,19 @@ import { useMovieId } from "../../context/useMovieId";
 
 import styles from "./styles.module.scss";
 
-interface IProps {
+interface MovieCartProps {
   poster_path: string;
   title: string;
   release_date: string;
   id: number;
 }
 
-export const MovieCart = ({ poster_path, title, release_date, id }: IProps) => {
+export const MovieCart = ({
+  poster_path,
+  title,
+  release_date,
+  id,
+}: MovieCartProps) => {
   const { handleMovieId } = useMovieId();
 
   return (

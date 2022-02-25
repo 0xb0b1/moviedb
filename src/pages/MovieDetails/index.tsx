@@ -107,11 +107,11 @@ export const MovieDetails = () => {
   );
 
   if (isLoading) {
-    return "Loading";
+    return <p>Loading</p>;
   }
 
   if (error) {
-    return "Error";
+    return <p>Error</p>;
   }
 
   console.log(movieId);
