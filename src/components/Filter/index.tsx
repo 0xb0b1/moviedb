@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { FilterButton } from "./FilterButton";
 import styles from "./styles.module.scss";
 

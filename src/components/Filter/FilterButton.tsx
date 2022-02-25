@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { HiXCircle } from "react-icons/hi";
 import { useFilter } from "../../hooks/useFilter";
 // import { activeFilter, handleEnableFilter } from "../../hooks/activeFilter";
@@ -9,13 +8,14 @@ interface IProps {
 }
 
 export const FilterButton = ({ id, name }: IProps) => {
-  const { activeFilter, handleEnableFilter } = useFilter();
+  const { filterName, activeFilter, handleEnableFilter } = useFilter();
 
+  console.log(filterName);
   return (
     <button
       type="button"
       key={id}
-      onClick={(event) => handleEnableFilter()}
+      onClick={() => handleEnableFilter(name)}
       style={{
         backgroundColor: activeFilter ? "#D18000" : "",
         color: activeFilter ? "white" : "",
