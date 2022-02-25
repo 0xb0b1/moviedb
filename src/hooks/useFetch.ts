@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 
-export const useFetch = (url: RequestInfo, options = {}) => {
+export function useFetch<T = unknown>(
+  url: RequestInfo,
+  options = {},
+  event = ""
+) {
   const [isLoading, setIsLoading] = useState(true);
   const [value, setValue] = useState(null);
   const [error, setError] = useState(null);
@@ -17,7 +21,7 @@ export const useFetch = (url: RequestInfo, options = {}) => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [url]);
+  }, [url, event]);
 
   return { isLoading, value, error };
-};
+}

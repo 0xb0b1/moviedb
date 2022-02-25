@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
-import { useMovieId } from "../../hooks/useMovieId";
-import { api } from "../../services/api";
+import { useMovieId } from "../../context/useMovieId";
 import { converDurationToTimeString } from "../../utils/convertDurationToTimeString";
 
 const movieDetails = {
@@ -91,11 +89,20 @@ const baseUrlMovieDBImage =
 
 import styles from "./styles.module.scss";
 
+interface DataProps {
+  poster_path: string;
+  title: string;
+  genres: Array<{
+    id: number;
+    name: string;
+  }>;
+  runtime: string;
+}
+
 export const MovieDetails = () => {
   const { movieId } = useMovieId();
-  const [movieDetails1, setMovieDetails] = useState({});
 
-  const { isLoading, value, error } = useFetch(
+  const { isLoading, value, error } = useFetch<DataProps[]>(
     `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.MOVIEDB_KEY}&page=1`
   );
 
@@ -113,19 +120,16 @@ export const MovieDetails = () => {
   return (
     <div className={styles.container}>
       <div className={styles.hero}>
-        <img
-          src={`${baseUrlMovieDBImage}${movieDetails.poster_path}`}
-          alt="poster"
-        />
+        <img src={`${baseUrlMovieDBImage}${value?.poster_path}`} alt="poster" />
       </div>
 
       <section className={styles.description}>
-        <h2>{movieDetails.title}</h2>
+        <h2>{value?.title}</h2>
 
-        {movieDetails.genres.map((item) => (
+        {value?.genres.map((item: { id: number; name: string }) => (
           <span key={item.id}>{item.name},</span>
         ))}
-        <span>{converDurationToTimeString(movieDetails.runtime)}</span>
+        <span>{converDurationToTimeString(value?.runtime)}</span>
       </section>
     </div>
   );

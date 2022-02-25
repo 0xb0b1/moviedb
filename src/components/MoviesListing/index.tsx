@@ -7,13 +7,15 @@ import { MovieCart } from "../MovieCart";
 import styles from "./styles.module.scss";
 
 interface IProps {
-  results: Array<{
-    poster_path: string;
-    title: string;
-    release_date: string;
-    id?: number;
-    genre_ids: Array<[]>;
-  }>;
+  value: {
+    results: Array<{
+      poster_path: string;
+      title: string;
+      release_date: string;
+      id?: number;
+      genre_ids: Array<[]>;
+    }>;
+  };
 }
 
 const baseUrlMovieDBImage =

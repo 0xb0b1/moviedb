@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useMovieId } from "../../hooks/useMovieId";
+import { useMovieId } from "../../context/useMovieId";
 
 import styles from "./styles.module.scss";
 
