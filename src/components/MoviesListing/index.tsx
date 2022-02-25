@@ -1,43 +1,46 @@
-import { useEffect, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
-import { useFilter } from "../../hooks/useFilter";
-import { api } from "../../services/api";
 import { MovieCart } from "../MovieCart";
 
 import styles from "./styles.module.scss";
 
-interface IProps {
-  value: {
-    results: Array<{
-      poster_path: string;
-      title: string;
-      release_date: string;
-      id?: number;
-      genre_ids: Array<[]>;
-    }>;
-  };
+interface MovieListingProps {
+  results: Array<{
+    poster_path: string;
+    title: string;
+    release_date: string;
+    id?: number;
+    genre_ids: Array<[]>;
+  }>;
 }
 
 const baseUrlMovieDBImage =
   "https://www.themoviedb.org/t/p/w600_and_h900_bestv2";
 
+const baseAPIUrl = "https://api.themoviedb.org/3";
+
 export const MovieListing = () => {
-  const { isLoading, value, error } = useFetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.MOVIEDB_KEY}&page=1`
+  const {
+    isLoading,
+    value: movieListing,
+    error,
+  } = useFetch<MovieListingProps>(
+    `${baseAPIUrl}/movie/popular?api_key=${process.env.MOVIEDB_KEY}&page=1`
   );
 
+  console.log(movieListing);
+
   if (isLoading) {
-    return "Loading";
+    return <p>Loading</p>;
   }
 
   if (error) {
-    return "Error";
+    return <p>Error</p>;
   }
 
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        {value?.results.map((item: any) => (
+        {movieListing?.results.map((item: any) => (
           <MovieCart
             poster_path={`${baseUrlMovieDBImage}${item.poster_path}`}
             title={item.title}

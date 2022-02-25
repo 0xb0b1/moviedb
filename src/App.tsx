@@ -1,4 +1,4 @@
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Header } from "./components/Header";
 import { MovieIdProvider } from "./context/useMovieId";
 import { Home } from "./pages/Home";

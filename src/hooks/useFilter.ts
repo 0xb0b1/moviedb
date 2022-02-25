@@ -2,10 +2,12 @@ import { useState } from "react";
 
 export const useFilter = () => {
   const [activeFilter, setActiveFilter] = useState(false);
+  const [filterName, setFilterName] = useState("");
 
-  function handleEnableFilter() {
+  function handleEnableFilter(filterText: string) {
     setActiveFilter(!activeFilter);
+    setFilterName(filterText);
   }
 
-  return { activeFilter, handleEnableFilter };
+  return { filterName, activeFilter, handleEnableFilter };
 };
