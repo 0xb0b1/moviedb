@@ -2,12 +2,12 @@ import { HiXCircle } from "react-icons/hi";
 import { useFilter } from "../../hooks/useFilter";
 // import { activeFilter, handleEnableFilter } from "../../hooks/activeFilter";
 
-interface IProps {
+interface FilterButtonProps {
   id: number;
   name: string;
 }
 
-export const FilterButton = ({ id, name }: IProps) => {
+export const FilterButton = ({ id, name }: FilterButtonProps) => {
   const { filterName, activeFilter, handleEnableFilter } = useFilter();
 
   console.log(filterName);
